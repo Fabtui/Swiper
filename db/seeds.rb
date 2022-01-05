@@ -5,3 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+ar = (1..10).to_a
+ar.each { |a| Offer.create(name: a.to_s) }
+
+puts Offer.count

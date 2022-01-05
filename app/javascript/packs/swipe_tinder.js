@@ -63,10 +63,40 @@ allCards.forEach(function (el) {
       var rotate = xMulti * yMulti;
 
       event.target.style.transform = 'translate(' + toX + 'px, ' + (toY + event.deltaY) + 'px) rotate(' + rotate + 'deg)';
+
+      if (event.additionalEvent == 'panright') {
+        like(event.target)
+      } else if (event.additionalEvent == 'panleft') {
+        dislike(event.target)
+      }
+
       initCards();
     }
   });
 });
+
+function like(target) {
+  console.log(target.dataset.id, "like")
+  const url = `/offers/${target.dataset.id}/?like=true`
+  fetch(url, {
+    method: 'PATCH',
+    headers: {
+      'Accept': 'text/plain',
+      'X-CSRF-Token': '<%= form_authenticity_token.to_s %>'
+    },
+  })
+}
+
+function dislike(target) {
+  console.log(target.dataset.id, "dislike")
+  const url = `/offers/${target.dataset.id}/?like=false`
+  const data = { id: target.dataset.id };
+  fetch(url, {
+    method: 'PATCH',
+    headers: { 'Accept': 'text/plain',
+      'X-CSRF-Token': '<%= form_authenticity_token.to_s %>' },
+  })
+}
 
 function createButtonListener(love) {
   return function (event) {
@@ -81,8 +111,10 @@ function createButtonListener(love) {
 
     if (love) {
       card.style.transform = 'translate(' + moveOutWidth + 'px, -100px) rotate(-30deg)';
+      like(card)
     } else {
       card.style.transform = 'translate(-' + moveOutWidth + 'px, -100px) rotate(30deg)';
+      dislike(card)
     }
 
     initCards();

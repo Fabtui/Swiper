@@ -5,35 +5,18 @@
   </div>
 
   <div class="tinder--cards">
-    <div class="tinder--card">
-      <img src="https://placeimg.com/600/300/people">
-      <h3>Demo card 1</h3>
-      <p>This is a demo for Tinder like swipe cards</p>
-    </div>
-    <div class="tinder--card">
-      <img src="https://placeimg.com/600/300/animals">
-      <h3>Demo card 2</h3>
-      <p>This is a demo for Tinder like swipe cards</p>
-    </div>
-    <div class="tinder--card">
-      <img src="https://placeimg.com/600/300/nature">
-      <h3>Demo card 3</h3>
-      <p>This is a demo for Tinder like swipe cards</p>
-    </div>
-    <div class="tinder--card">
-      <img src="https://placeimg.com/600/300/tech">
-      <h3>Demo card 4</h3>
-      <p>This is a demo for Tinder like swipe cards</p>
-    </div>
-    <div class="tinder--card">
-      <img src="https://placeimg.com/600/300/arch">
-      <h3>Demo card 5</h3>
-      <p>This is a demo for Tinder like swipe cards</p>
-    </div>
+    <% @offers = Offer.all.sort_by(&:id) %>
+    <% @offers.each do |offer| %>
+      <div class="tinder--card" data-id=<%= offer.id %>>
+        <img src="https://placeimg.com/600/300/people">
+        <h3>Offer <%= offer.name %></h3>
+      </div>
+    <% end %>
   </div>
 
   <div class="tinder--buttons">
     <button id="nope"><i class="fas fa-times"></i></button>
     <button id="love"><i class="fa fa-heart"></i></button>
   </div>
+  <%= link_to 'Offers', offers_path %>
 </div>
