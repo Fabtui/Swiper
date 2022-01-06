@@ -14,11 +14,12 @@
 @import "components/navbar";
 
 body {
+  font-family: 'Gotham';
   display: grid;
   grid-template-rows: 1fr auto;
   grid-template-areas: "main"
                        "header";
-  color: grey;
+  color: rgba(255, 255, 255, 0.815);
   height: 100vh;
   background: rgb(170, 170, 172);
   background: linear-gradient(180deg, rgba(35,35,39,1) 10%, rgba(22,22,22,1) 77%, rgba(33,33,33,1) 90%);
