@@ -89,7 +89,7 @@ function like(target, like) {
     method: 'GET',
     headers: {
       'Accept': 'text/plain',
-      'X-CSRF-Token': '<%= form_authenticity_token.to_s %>'
+      // 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') // X-CSRF-TOKEN is used for Ruby on Rails Tokens
     },
   })
 }

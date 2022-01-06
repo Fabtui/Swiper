@@ -16,6 +16,10 @@ module TinderSwipe
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.1
     config.assets.paths << Rails.root.join("app", "assets", "fonts")
+    config.angular_rails_csrf_cookie_name = 'XSRF-TOKEN'
+    config.angular_rails_csrf_domain = :all
+    config.angular_rails_csrf_secure = true
+    config.angular_rails_csrf_same_site = :strict
     # Configuration for the application, engines, and railties goes here.
     #
     # These settings can be overridden in specific environments using the files

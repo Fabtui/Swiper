@@ -11,10 +11,6 @@ class MatchesController < ApplicationController
       @offer.like = false
     end
     @offer.save
-    respond_to do |format|
-      format.html
-      format.js #this is needed to handle ajaxified pagination
-    end
   end
 
   private
