@@ -23,6 +23,7 @@
 	}
 	&__item--active{
 		border-bottom: 3px solid grey;
+    transform: translateY(2px);
 	}
 	&__item-content{
     margin-top: 4px;
@@ -35,6 +36,8 @@
   .navbar-logo {
     width: 30px;
     margin-bottom: 8px;
+    color: white;
+    font-size: 32px;
   }
 
   span{
@@ -49,4 +52,24 @@
   .dropdown-item{
     color: white;
   }
+}
+
+.navbar-logo--active {
+  text-shadow: 0 0 10px white;
+}
+
+@keyframes jump {
+  0%    { transform: translateY( 0px); }
+  25%   { transform: translateY(-10px); }
+  70%   { transform: translateY( 2px); }
+  90%   { transform: translateY( -3px); }
+  100%  { transform: translateY( 0px); }
+}
+
+.header__item-content:hover {
+  animation: jump 0.7s;
+}
+
+.header__item a:hover {
+text-decoration: none;
 }

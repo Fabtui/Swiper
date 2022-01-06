@@ -1,6 +1,6 @@
 <div class="container mt-4">
 <h1>FONT Test</h1>
-  <ul>
+  <ul class="ml-4">
   <% @offers.each do |offer| %>
     <li>
       <%= link_to offer.name, offer_path(offer), method: 'patch', style:"color: black;" %>
