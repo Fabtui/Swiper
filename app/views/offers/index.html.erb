@@ -3,7 +3,7 @@
   <ul>
   <% @offers.each do |offer| %>
     <li>
-      <%= link_to offer.name, offer_path(offer), method: 'patch' %>
+      <%= link_to offer.name, offer_path(offer), method: 'patch', style:"color: black;" %>
       <% if offer.matches.count > 0 %>
         <% if offer.matches.first.user_status %>
           <i class="fa fa-heart"></i>

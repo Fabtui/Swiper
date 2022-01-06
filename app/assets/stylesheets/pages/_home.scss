@@ -57,11 +57,11 @@ body {
 
 .tinder--cards {
   flex-grow: 1;
-  padding-top: 40px;
+  padding-top: 10px;
   text-align: center;
   display: flex;
   justify-content: center;
-  align-items: flex-end;
+  align-items: center;
   z-index: 1;
 }
 
@@ -111,7 +111,9 @@ body {
 .tinder--buttons {
   flex: 0 0 100px;
   text-align: center;
-  padding-top: 20px;
+  // padding-top: 20px;
+  transform: translateY(-60px);
+  z-index: 99;
 }
 
 .tinder--buttons button {

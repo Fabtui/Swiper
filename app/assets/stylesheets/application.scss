@@ -19,10 +19,9 @@ body {
   grid-template-rows: 1fr auto;
   grid-template-areas: "main"
                        "header";
-  color: rgba(255, 255, 255, 0.815);
+  color: rgba(0, 0, 0, 0.815);
   height: 100vh;
-  background: rgb(170, 170, 172);
-  background: linear-gradient(180deg, rgba(35,35,39,1) 10%, rgba(22,22,22,1) 77%, rgba(33,33,33,1) 90%);
+  background: linear-gradient(180deg, rgb(93, 93, 245) 10%, rgb(170, 32, 32) 77%, rgb(255, 230, 0) 90%);
   width: 100%;
 }
 

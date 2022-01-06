@@ -1,3 +1,5 @@
+//  <script src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.min.js" integrity="sha512-UXumZrZNiOwnTcZSHLOfcTs0aos2MzBWHXOHOuB0J/R44QB0dwY5JgfbvljXcklVf65Gc4El6RjZ+lnwd2az2g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
 const swipe = () => {
   const tinder = document.querySelector('.tinder');
   if (tinder) {
@@ -31,6 +33,7 @@ allCards.forEach(function (el) {
     if (event.deltaX === 0) return;
     if (event.center.x === 0 && event.center.y === 0) return;
 
+    //toggle button style on pan
     tinderContainer.classList.toggle('tinder_love', event.deltaX > 0);
     tinderContainer.classList.toggle('tinder_nope', event.deltaX < 0);
 
@@ -41,6 +44,7 @@ allCards.forEach(function (el) {
     event.target.style.transform = 'translate(' + event.deltaX + 'px, ' + event.deltaY + 'px) rotate(' + rotate + 'deg)';
   });
 
+  //swipe action
   hammertime.on('panend', function (event) {
     el.classList.remove('moving');
     tinderContainer.classList.remove('tinder_love');
@@ -64,20 +68,23 @@ allCards.forEach(function (el) {
 
       event.target.style.transform = 'translate(' + toX + 'px, ' + (toY + event.deltaY) + 'px) rotate(' + rotate + 'deg)';
 
+      // send different http request depending on the pan
       if (event.additionalEvent == 'panright') {
-        like(event.target)
+        like(event.target, true)
       } else if (event.additionalEvent == 'panleft') {
-        dislike(event.target)
+        like(event.target, false)
       }
 
+      // initiate remaining cards
       initCards();
     }
   });
 });
 
-function like(target) {
-  console.log(target.dataset.id, "like")
-  const url = `/offers/${target.dataset.id}/matches/new/?like=true`
+// send ajax http get request to matches controller with like=true params
+function like(target, like) {
+  // console.log(target.dataset.id, like)
+  const url = `/offers/${target.dataset.id}/matches/new/?like=${like}`
   fetch(url, {
     method: 'GET',
     headers: {
@@ -87,17 +94,7 @@ function like(target) {
   })
 }
 
-function dislike(target) {
-  console.log(target.dataset.id, "dislike")
-  const url = `/offers/${target.dataset.id}/matches/new/?like=false`
-  const data = { id: target.dataset.id };
-  fetch(url, {
-    method: 'GET',
-    headers: { 'Accept': 'text/plain',
-      'X-CSRF-Token': '<%= form_authenticity_token.to_s %>' },
-  })
-}
-
+//buttons actions
 function createButtonListener(love) {
   return function (event) {
     var cards = document.querySelectorAll('.tinder--card:not(.removed)');
@@ -111,10 +108,10 @@ function createButtonListener(love) {
 
     if (love) {
       card.style.transform = 'translate(' + moveOutWidth + 'px, -100px) rotate(-30deg)';
-      like(card)
+      like(card, true)
     } else {
       card.style.transform = 'translate(-' + moveOutWidth + 'px, -100px) rotate(30deg)';
-      dislike(card)
+      like(card, false)
     }
 
     initCards();

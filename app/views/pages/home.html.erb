@@ -7,10 +7,12 @@
   <div class="tinder--cards">
     <% @offers = Offer.all.sort_by(&:id) %>
     <% @offers.each do |offer| %>
+      <% if offer.matches.count == 0 %>
       <div class="tinder--card" data-id=<%= offer.id %>>
         <img src="https://placeimg.com/600/300/people">
         <h3>Offer <%= offer.name %></h3>
       </div>
+      <% end %>
     <% end %>
   </div>
 
@@ -18,5 +20,4 @@
     <button id="nope"><i class="fas fa-times"></i></button>
     <button id="love"><i class="fa fa-heart"></i></button>
   </div>
-  <%= link_to 'Offers', offers_path %>
 </div>
