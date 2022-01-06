@@ -77,9 +77,9 @@ allCards.forEach(function (el) {
 
 function like(target) {
   console.log(target.dataset.id, "like")
-  const url = `/offers/${target.dataset.id}/?like=true`
+  const url = `/offers/${target.dataset.id}/matches/new/?like=true`
   fetch(url, {
-    method: 'PATCH',
+    method: 'GET',
     headers: {
       'Accept': 'text/plain',
       'X-CSRF-Token': '<%= form_authenticity_token.to_s %>'
@@ -89,10 +89,10 @@ function like(target) {
 
 function dislike(target) {
   console.log(target.dataset.id, "dislike")
-  const url = `/offers/${target.dataset.id}/?like=false`
+  const url = `/offers/${target.dataset.id}/matches/new/?like=false`
   const data = { id: target.dataset.id };
   fetch(url, {
-    method: 'PATCH',
+    method: 'GET',
     headers: { 'Accept': 'text/plain',
       'X-CSRF-Token': '<%= form_authenticity_token.to_s %>' },
   })
