@@ -5,13 +5,9 @@
   </div>
 
   <div class="tinder--cards">
-    <% @offers = Offer.all.sort_by(&:id) %>
     <% @offers.each do |offer| %>
-      <% if offer.matches.count == 0 %>
-      <div class="tinder--card" data-id=<%= offer.id %>>
-        <img src="https://placeimg.com/600/300/people">
-        <h3>Offer <%= offer.name %></h3>
-      </div>
+      <% if offer.matches.empty? %>
+        <%= render 'card', offer: offer %>
       <% end %>
     <% end %>
   </div>
