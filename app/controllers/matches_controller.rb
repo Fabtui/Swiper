@@ -13,6 +13,12 @@ class MatchesController < ApplicationController
     @offer.save
   end
 
+  def destroy_all
+    Match.destroy_all
+    redirect_to root_path
+  end
+
+
   private
 
   def create_match(offer, like)

@@ -141,3 +141,26 @@ body {
   color: #CDD6DD;
 }
 
+.redo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10vh 0;
+}
+
+.redo-icone {
+  font-size: 4rem;
+  color: rgba(0, 0, 0, 0.8);
+  text-shadow: -1px -1px 5px rgba(0, 0, 0, 0.705);
+  box-shadow: 4px 6px 8px 0px black;
+  background: rgb(0, 0, 0);
+  background: linear-gradient(340deg, rgba(0, 0, 0, 1) 0%, rgba(112, 112, 112, 1) 35%, rgba(185, 216, 223, 1) 100%);
+  padding: 20px 32px;
+  border-radius: 50%;
+  &:hover {
+    border: 1px solid black;
+    color: black;
+    transform: translate(5px, 5px);
+    box-shadow: none;
+  }
+}
