@@ -20,7 +20,7 @@ ActiveStorage.start()
 
 // External imports
 import "bootstrap";
-import { swipe } from "./swipe_tinder"
+import { swipe } from "../components/swipe_tinder"
 
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
